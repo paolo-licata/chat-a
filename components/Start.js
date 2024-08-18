@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { StyleSheet, View, Text, TextInput, Button, ImageBackground, TouchableOpacity, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, View, Text, TextInput, Button, ImageBackground, TouchableOpacity, Keyboard, TouchableWithoutFeedback, } from 'react-native';
 
-const Screen1 = ({ navigation }) => {
+const Start = ({ navigation }) => {
 	const [name, setName] = useState('');
   const [background, setBackground] = useState('');
 
@@ -141,4 +141,4 @@ selectedColor: {
 },
 });
 
-export default Screen1;
+export default Start;
