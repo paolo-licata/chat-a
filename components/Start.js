@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, View, Text, TextInput, Button, ImageBackground, TouchableOpacity, Keyboard, TouchableWithoutFeedback, } from 'react-native';
+import { StyleSheet, View, Text, TextInput, Button, ImageBackground, TouchableOpacity, Keyboard, TouchableWithoutFeedback, KeyboardAvoidingView, Platform } from 'react-native';
 
 const Start = ({ navigation }) => {
 	const [name, setName] = useState('');
@@ -10,6 +10,7 @@ const Start = ({ navigation }) => {
   <ImageBackground source={require('../img/bgImage.png')} style={styles.imageBackground}>
 
   <Text style={styles.appTitle}>App Title</Text>
+  
 
     <View style={styles.container}>
       <TextInput
@@ -60,8 +61,8 @@ const Start = ({ navigation }) => {
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Chat', { name: name, background: background })}>
           <Text style={styles.textButton}>Go to Chat</Text>
         </TouchableOpacity>
-
-    </View>
+  </View>
+  {Platform.OS === "ios"?<KeyboardAvoidingView behavior="padding" />: null}
   </ImageBackground>
   </TouchableWithoutFeedback>
  );
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     color: "#ffffff",
     justifyContent: "center",
-    marginTop: 80,
+    marginTop: 40,
   },
   container: {
    justifyContent: 'space-evenly',
@@ -89,13 +90,14 @@ const styles = StyleSheet.create({
    width: "88%",
    height: "44%",
    backgroundColor: "white",
-   marginBottom: 70,
+   padding: 10,
+   marginBottom: 80,
    borderRadius: 8,
  },
  textInput: {
 	width: '88%',
-  padding: 20,
-  borderWidth: 1,
+  padding: 10,
+  borderWidth: 0.7,
   fontWeight: "300",
   margin: 10,
  },
@@ -112,7 +114,7 @@ const styles = StyleSheet.create({
   color: "#fff",
 },
 colorText: {
-  fontSize: 20,
+  fontSize: 18,
   color: "#757083",
   marginBottom: 10,
   textAlign: 'left',
@@ -121,7 +123,8 @@ colorText: {
 selectColorBox: {
   width: '88%',
   alignItems: 'center',
-  justifyContent: 'space-between'
+  justifyContent: 'space-between',
+  marginBottom: 10,
 },
 colorsBox: {
   flexDirection: "row",
