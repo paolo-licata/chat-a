@@ -7,9 +7,13 @@ import { useEffect } from "react";
 import { LogBox, Alert } from "react-native";
 
 LogBox.ignoreLogs(["AsyncStorage has been extracted from"]);
+LogBox.ignoreLogs(["@firebase/auth: Auth"]);
+LogBox.ignoreLogs(["Possible unhandled promise rejection"]);
 
 import Start from './components/Start';
 import Chat from './components/Chat';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
 //Firebase configuration
@@ -38,12 +42,10 @@ const App = () => {
     }
   }, [connectionStatus.isConnected]);
 
-  const Stack = createNativeStackNavigator();
-
     return (
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Screen1"
+          initialRouteName="Start"
         >
           <Stack.Screen
             name="Home"
