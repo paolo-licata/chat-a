@@ -28,7 +28,7 @@ const Start = ({ navigation }) => {
   <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
   <ImageBackground source={require('../img/bgImage.png')} style={styles.imageBackground}>
 
-  <Text style={styles.appTitle}>App Title</Text>
+  <Text style={styles.appTitle}>Chatters</Text>
   
 
     <View style={styles.container}>

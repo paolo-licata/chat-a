@@ -5,6 +5,7 @@ import { getFirestore, disableNetwork, enableNetwork } from "firebase/firestore"
 import { useNetInfo }from '@react-native-community/netinfo';
 import { useEffect } from "react";
 import { LogBox, Alert } from "react-native";
+import { getStorage } from "firebase/storage";
 
 LogBox.ignoreLogs(["AsyncStorage has been extracted from"]);
 LogBox.ignoreLogs(["@firebase/auth: Auth"]);
@@ -29,6 +30,7 @@ const App = () => {
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
+  const storage = getStorage(app);
 
   // Implementing offline app behaviour
   const connectionStatus = useNetInfo();
@@ -54,7 +56,7 @@ const App = () => {
           <Stack.Screen
             name="Chat"
           >
-            {props => <Chat isConnected={connectionStatus.isConnected} db={db} {...props} />}
+            {props => <Chat isConnected={connectionStatus.isConnected} db={db} storage={storage} {...props} />}
           </Stack.Screen>
           
         </Stack.Navigator>
