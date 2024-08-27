@@ -25,6 +25,7 @@ To build a chat app for mobile devices using React Native. The app will provide 
 - Install the necessary dependecies found in package.json using: <strong>npm install</strong>
 - Set up your Firebase account by Signing In, start a new project. Set up your database by cliccking on Build --> Firestore Database. Remember to change the rules from: <strong>"allow read, write: if false;"</strong> to: <strong>"allow read, write: if true;"</strong>
 - To be able to send picture and storing them, you will have to set up a firebase Storage. Similar as before, click on Build --> Storage and "Get started'. Remember to change the rules from: <strong>"allow read, write: if false;"</strong> to: <strong>"allow read, write: if true;"</strong>
+- Finally link the project to your Firestore by replacing firestoreConfig with your own configuration. You'll be able to find this data in your Firestore Console. While in your project page click on Setting --> Project Settings and then scroll down to find your own <strong>web app's Firebase configuration</strong>.
 
 ## Start expo project
 
