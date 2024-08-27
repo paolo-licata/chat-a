@@ -5,13 +5,13 @@ import * as Location from 'expo-location';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage, userID }) => {
-	const actionSheet = useActionSheet();
-	
-	const onActionPress = () => {
-		const options = ['Choose from library', 'Take picture', 'Send location', 'Cancel'];
+  const actionSheet = useActionSheet();
+
+  const onActionPress = () => {
+    const options = ['Choose from library', 'Take picture', 'Send location', 'Cancel'];
     const cancelButtonIndex = options.length - 1;
 
-		actionSheet.showActionSheetWithOptions(
+    actionSheet.showActionSheetWithOptions(
       {
         options,
         cancelButtonIndex,
@@ -26,11 +26,13 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage, userID })
             return;
           case 2:
             getLocation();
+            return;
           default:
+            return;
         }
       },
     );
-	}
+  }
 
   const pickImage = async () => {
     let permissions = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -50,7 +52,7 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage, userID })
     }
   }
 
-	const getLocation = async () => {
+  const getLocation = async () => {
     let permissions = await Location.requestForegroundPermissionsAsync();
     if (permissions?.granted) {
       const location = await Location.getCurrentPositionAsync({});
@@ -82,13 +84,13 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage, userID })
     });
   }
 
-	return (
-		<TouchableOpacity style={styles.container} onPress={onActionPress}>
-			<View style={[styles.wrapper, wrapperStyle]}>
-				<Text style={[styles.iconText, iconTextStyle]}>+</Text>
-			</View>
+  return (
+    <TouchableOpacity style={styles.container} onPress={onActionPress}>
+      <View style={[styles.wrapper, wrapperStyle]}>
+        <Text style={[styles.iconText, iconTextStyle]}>+</Text>
+      </View>
     </TouchableOpacity>
-	)
+  )
 }
 
 const styles = StyleSheet.create({
